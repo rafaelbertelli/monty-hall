@@ -1,0 +1,61 @@
+.area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--door-width);
+  height: var(--door-height);
+  margin: 5px;
+}
+
+.frame {
+  display: flex;
+  flex: 1;
+  border-top: 5px solid brown;
+  border-left: 5px solid brown;
+  border-right: 5px solid brown;
+  width: 90%;
+}
+
+.door {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  background-color: chocolate;
+  padding: 15px;
+}
+
+.knob {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: brown;
+  position: absolute;
+  align-self: flex-start;
+  top: calc(var(--door-height) * 0.5);
+}
+
+.number {
+  font-size: 3rem;
+}
+
+.floor {
+  height: 10px;
+  width: 100%;
+  background-color: #ddd;
+}
+
+.selectedDoor {
+  border-top: 5px solid yellow;
+  border-left: 5px solid yellow;
+  border-right: 5px solid yellow;
+}
+
+.selectedDoor .number {
+  color: yellow;
+}
+
+.selectedDoor .knob {
+  background-color: yellow;
+}

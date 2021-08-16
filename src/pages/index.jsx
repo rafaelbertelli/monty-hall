@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Door from "../components/door";
 
 import Gift from "../components/gift";
 
@@ -12,6 +13,11 @@ export default function Home() {
       </Head>
 
       <Gift />
+
+      <div style={{ display: "flex" }}>
+        <Door selected />
+        <Door />
+      </div>
     </div>
   );
 }
