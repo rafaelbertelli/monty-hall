@@ -1,12 +1,11 @@
 import Head from "next/head";
 import { useState } from "react";
 import Door from "../components/door";
-
 import Gift from "../components/gift";
-import DoorModel from "../model/door";
+import { createDoors, updateDoors } from "../functions/doors";
 
 export default function Home() {
-  const [d1, setD1] = useState(new DoorModel(1));
+  const [doors, setDoors] = useState(createDoors(5, 2));
 
   return (
     <div>
@@ -19,7 +18,13 @@ export default function Home() {
       <Gift />
 
       <div style={{ display: "flex" }}>
-        <Door value={d1} onChange={(newDoor) => setD1(newDoor)} />
+        {doors.map((d) => (
+          <Door
+            key={d.number}
+            value={d}
+            onChange={(newDoor) => setDoors(updateDoors(doors, newDoor))}
+          />
+        ))}
       </div>
     </div>
   );
