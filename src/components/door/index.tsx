@@ -1,5 +1,6 @@
 import DoorModel from "../../model/door";
 import styles from "./Door.module.css";
+import Gift from "../gift";
 
 interface DoorProps {
   value: DoorModel;
@@ -18,15 +19,19 @@ export default function Door(props: DoorProps) {
     onChange(value.open());
   };
 
+  function renderDoor() {
+    return (
+      <div className={styles.door}>
+        <div className={styles.number}>{value.number}</div>
+        <div className={styles.knob} onClick={openDoor}></div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.area} onClick={toggleSelection}>
       <div className={`${styles.frame} ${selectedDoor}`}>
-        {!value.opened && (
-          <div className={styles.door}>
-            <div className={styles.number}>{value.number}</div>
-            <div className={styles.knob} onClick={openDoor}></div>
-          </div>
-        )}
+        {value.closed ? renderDoor() : value.hasGift && <Gift />}
       </div>
       <div className={styles.floor}></div>
     </div>

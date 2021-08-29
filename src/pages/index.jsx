@@ -15,8 +15,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Gift />
-
       <div style={{ display: "flex" }}>
         {doors.map((d) => (
           <Door
