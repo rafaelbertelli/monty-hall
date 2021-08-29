@@ -1,12 +1,7 @@
 import Head from "next/head";
-import { useState } from "react";
-import Door from "../components/door";
-import Gift from "../components/gift";
-import { createDoors, updateDoors } from "../functions/doors";
+import Link from "next/link";
 
 export default function Home() {
-  const [doors, setDoors] = useState(createDoors(5, 2));
-
   return (
     <div>
       <Head>
@@ -15,15 +10,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div style={{ display: "flex" }}>
-        {doors.map((d) => (
-          <Door
-            key={d.number}
-            value={d}
-            onChange={(newDoor) => setDoors(updateDoors(doors, newDoor))}
-          />
-        ))}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h1>Início do jogo</h1>
       </div>
+      <Link href="/game" passHref>
+        <button>Iniciar o jogo</button>
+      </Link>
     </div>
   );
 }
