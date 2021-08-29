@@ -23,3 +23,7 @@ export function updateDoors(
     return door.opened ? door : door.deselect();
   });
 }
+
+export function validDoors(inputDoors, inputGiftDoor): boolean {
+  return inputGiftDoor <= inputDoors;
+}

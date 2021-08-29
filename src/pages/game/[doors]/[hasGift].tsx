@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Door from "../../../components/door";
-import { createDoors, updateDoors } from "../../../functions/doors";
+import { createDoors, updateDoors, validDoors } from "../../../functions/doors";
 import styles from "./Game.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -10,7 +10,11 @@ export default function Game() {
   const [doors, setDoors] = useState([]);
 
   useEffect(() => {
-    setDoors(createDoors(+router.query.doors, +router.query.hasGift));
+    const inputDoors = +router.query.doors;
+    const inputGiftDoor = +router.query.hasGift;
+
+    if (validDoors(inputDoors, inputGiftDoor))
+      setDoors(createDoors(inputDoors, inputGiftDoor));
   }, [router.query]);
 
   function renderDoors() {
